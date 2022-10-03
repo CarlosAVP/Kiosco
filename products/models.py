@@ -18,5 +18,3 @@ class StockOrderForProduct(models.Model):
   stock_order = models.ForeignKey(StockOrder, on_delete=models.CASCADE)
   product = models.ForeignKey(Product, on_delete=models.CASCADE)
   quantity = models.IntegerField()
-
-

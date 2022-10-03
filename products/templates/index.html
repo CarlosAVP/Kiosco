@@ -1,6 +1,46 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block body %}
+<table class="table table-striped-columns text-center">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col" class="text-start">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Stock</th>
+      <th scope="col">EAN13 (Código de Barras)</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {% for product in products %}
+    <tr>
+      <td scope="row">
+        <span class="badge bg-primary rounded-pill"> {{ product.id }} </span>
+      </td>
+      <td class="text-start">{{ product.name }}</td>
+      <td>
+        <span class="badge bg-success rounded-pill">
+          $ {{ product.price }}
+        </span>
+      </td>
+      <td>
+        <span class="badge bg-primary rounded-pill"> {{ product.stock }} </span>
+      </td>
+      <td>
+        {% comment %} <svg
+          class="barcode"
+          jsbarcode-format="EAN13"
+          jsbarcode-value="{{ product.barcode }}"
+          jsbarcode-textmargin="0"
+          jsbarcode-fontoptions="bold"
+        ></svg> {% endcomment %}
+        
+        <span class="badge bg-secondary rounded-pill">
+          {{ product.barcode }}
+        </span>
+       
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-{% block body %}
-
-<a href="">asd</a>
 {% endblock %}
