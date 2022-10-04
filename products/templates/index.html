@@ -7,6 +7,7 @@
       <th scope="col">Precio</th>
       <th scope="col">Stock</th>
       <th scope="col">EAN13 (Código de Barras)</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody class="table-group-divider">
@@ -25,22 +26,31 @@
         <span class="badge bg-primary rounded-pill"> {{ product.stock }} </span>
       </td>
       <td>
-        {% comment %} <svg
+        {% comment %}
+        <svg
           class="barcode"
           jsbarcode-format="EAN13"
           jsbarcode-value="{{ product.barcode }}"
           jsbarcode-textmargin="0"
           jsbarcode-fontoptions="bold"
-        ></svg> {% endcomment %}
-        
+        ></svg>
+        {% endcomment %}
+
         <span class="badge bg-secondary rounded-pill">
           {{ product.barcode }}
         </span>
-       
+      </td>
+      <td>
+        <a
+          href="{% url 'products:delete' product.id %}"
+          onclick="confirmDelete(event)"
+          class="btn btn-sm btn-outline-danger"
+          >Borrar</a
+        >
       </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 
-{% endblock %}
+{% endblock body %}

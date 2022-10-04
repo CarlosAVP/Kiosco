@@ -1,0 +1,25 @@
+
+{% extends 'layout.html' %}
+
+{% block body %}
+<form action="{% url 'products:store' %}" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="product_name" class="form-label">Nombre del producto</label>
+    <input name="name" type="text" class="form-control" id="product_name">
+   </div>
+  <div class="mb-3">
+    <label for="product_stock" class="form-label">Stock</label>
+    <input name="stock" type="number" class="form-control" id="product_stock">
+  </div>
+  <div class="mb-3">
+    <label for="product_price" class="form-label">Precio</label>
+    <input name="price" type="number" class="form-control" id="product_price">
+  </div>
+  <div class="mb-3">
+    <label for="product_barcode" class="form-label">Código de Barras (EAN13)</label>
+    <input name="barcode" type="text" class="form-control" id="product_barcode">
+  </div>
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+{% endblock body %}
